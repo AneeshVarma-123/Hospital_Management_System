@@ -13,7 +13,11 @@ if (FRONTEND_URL) {
   app.use(cors({ origin: FRONTEND_URL }));
 } else {
   // permissive during development; set FRONTEND_URL in production
-  app.use(cors());
+  app.use(cors({
+  origin: 'https://hmsfrontend-o4rlrnqns-aneesh-varmas-projects.vercel.app', // Replace with your Vercel URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // If you need cookies
+}));
 }
 app.use(express.json());
 
