@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Admin-Items{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+.AItems{
+    display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:smaller;
+  background-color: rgb(21, 127, 220);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4.5px;
+  cursor: pointer;
+  color:rgb(228, 218, 228);
+  transition: 0.3s ease
+}
+
+.AItems:hover{
+    background-color: rgba(23, 218, 218, 0.819);
+    color: white;
+}
+
+
+.Admin-Section{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.Admin-Content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: absolute;
+    top: 200px;
+}
+
+.Admin-Content h1{
+    
+    font-size: 70px;
+}
+
+.Admin-Buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-left: -15px;
+}
+
+.Admin-Button{
+     background-color: royalblue;
+    padding: 10px 20px;
+    border: none;
+    color: rgb(230, 217, 230);
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 140px;
+    
+}
+
+.Admin-Button:hover {
+     background-color: rgba(23, 139, 184, 0.819);
+     transform: scale(1.05);
+    color: white;
+}
+
+.AdminV{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+}
+
+/* Admin login card styles */
+.Admin-LoginCard {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,255,0.9));
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12);
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.Admin-LoginCard h2 { text-align: center; color: #16324a; margin-bottom: 6px }
+.Admin-LoginCard p.subtitle { text-align: center; color: #44647a; font-size: 0.9rem; margin-bottom: 8px }
+
+.Admin-Input { padding: 10px 12px; border-radius: 8px; border: 1px solid #e6eef6; outline: none; font-size: 0.95rem }
+.Admin-Input:focus { box-shadow: 0 4px 14px rgba(35,93,168,0.12); border-color: #cde3fb }
+
+.Admin-Primary {
+  background: linear-gradient(90deg,#2a7ae2,#2aa5e2);
+  color: #fff; padding: 10px 14px; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; box-shadow: 0 6px 18px rgba(42,122,226,0.18)
+}
+.Admin-Primary:disabled { opacity: 0.6; cursor: not-allowed }
+
+.Admin-Helper { text-align:center; font-size:0.85rem; color:#7b98a9 }
+
+
+
+
+

@@ -1,0 +1,80 @@
+.TBT-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.TBT-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 12px;
+  align-items: start;
+  grid-template-columns: 1fr; /* default: 1 column for small screens */
+}
+
+/* >=800px -> 2 columns */
+@media (min-width: 800px) {
+  .TBT-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* >=1200px -> 3 columns */
+@media (min-width: 1200px) {
+  .TBT-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+.TBT-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.TBT-card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.TBT-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.TBT-value {
+  font-weight: 600;
+  color: #222;
+}
+
+.TBT-card-footer {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.TBT-empty {
+  color: #666;
+  padding: 20px 0;
+}
+
+.TBT-card-actions { margin-top:10px; display:flex; gap:8px }
+.TBT-appoint { background:#2a7ae2; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer }
+
+.TBT-edit, .TBT-save, .TBT-cancel { background:#fff; border:1px solid #2a7ae2; color:#2a7ae2; padding:6px 10px; border-radius:6px; cursor:pointer }
+.TBT-save { background:#2a7ae2; color:#fff; border:1px solid #2a7ae2 }
+.TBT-inline-date { padding:6px 8px; border-radius:6px; border:1px solid #ddd }
+
+.Doctor-card { background:#fff; padding:12px; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,0.06); cursor:pointer; transition:transform .12s, box-shadow .12s }
+.Doctor-card:hover { transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.08) }
+.Doctor-card.selected { outline:2px solid #2a7ae2 }
+.Doctor-name { font-weight:700 }
+.Doctor-meta { color:#555 }
+.Doctor-meta-small { color:#888; font-size:0.85rem }
+
+@media (max-width: 520px) {
+  .TBT-card-row { font-size: 0.9rem }
+}

@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.BookPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.BNav-button{
+    display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:smaller;
+  background-color: rgb(16, 122, 208);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4.5px;
+  cursor: pointer;
+  color:rgb(228, 218, 228);
+  transition: 0.3s ease
+}
+
+.BNav-button:hover {
+  background-color: rgb(74, 143, 229);
+  color: white;
+}
+
+.BContainer{
+  display: flex;
+  flex: 1;
+  height: 100%;
+  flex-direction: column;
+  position: relative;
+}
+
+
+.BVideo{
+   display: flex;
+   height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Bform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100px;
+    left: 350px;
+
+    height: 450px;
+    width: 800px;
+    border-radius: 10px 10px 10px 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.B-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+}
+
+.B-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 120%;
+  width: 100%;
+}
+
+.B-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    top: 0px;
+    padding: 20px;
+    color:rgb(119, 156, 201);
+    border-bottom: 1px solid lightgray;
+
+}
+
+.B-footer{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px;
+    color: steelblue;
+    border-top: 1px solid lightgray;
+    justify-content: end;
+    gap: 10px;
+}
+
+.End-button{
+    display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size:smaller;
+  background-color: royalblue;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4.5px;
+  cursor: pointer;
+  color:rgb(228, 218, 228);
+  transition: 0.3s ease;
+}
+
+.End-button:hover {
+    background-color: rgb(74, 143, 229);
+    color: white;
+}
+
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin-top: -10px;
+}
+
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    
+}
+
+.input-group label {
+    font-weight: bold;
+    
+}
+
+.input-group input,textarea {
+    padding: 8px;
+    border: 1px solid rgb(74, 117, 179);
+    border-radius: 4px;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    border-color: rgb(16, 122, 208);
+    outline: none;
+    transform: scale(1.02);
+    box-shadow: 0 0 5px rgba(16, 122, 208, 0.5);
+}
+
+
