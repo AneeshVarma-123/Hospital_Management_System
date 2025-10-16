@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Ad.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function Doctors() {
   const [doctors, setDoctors] = useState([]);
@@ -11,8 +12,8 @@ function Doctors() {
   useEffect(()=>{
     let mounted = true;
     const fetchDocs = async ()=>{
-      try {
-        const res = await fetch('http://localhost:5000/api/doctors');
+  try {
+  const res = await fetch(`${apiBase}/api/doctors`);
         const data = await res.json();
         if(mounted) setDoctors(data);
       } catch(err){ console.error(err) }
@@ -47,7 +48,7 @@ function Doctors() {
                     setSending(true);
                     try{
                       const token = localStorage.getItem('hms_admin_token');
-                      const res = await fetch('http://localhost:5000/api/messages', { method:'POST', headers: { 'Content-Type':'application/json', Authorization: token? `Bearer ${token}` : '' }, body: JSON.stringify({ doctorId: d._id, content: messageText.trim() }) });
+                      const res = await fetch(`${apiBase}/api/messages`, { method:'POST', headers: { 'Content-Type':'application/json', Authorization: token? `Bearer ${token}` : '' }, body: JSON.stringify({ doctorId: d._id, content: messageText.trim() }) });
                       const data = await res.json();
                       if(!res.ok) return alert(data.error || 'Failed to send');
                       alert('Message sent');

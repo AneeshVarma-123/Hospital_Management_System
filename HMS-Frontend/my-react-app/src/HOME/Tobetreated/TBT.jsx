@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './TBT.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 import { useNavigate } from 'react-router-dom';
 
 function TBT() {
@@ -13,7 +14,7 @@ function TBT() {
     const fetchAppointments = async () => {
       try {
   const token = localStorage.getItem('hms_admin_token');
-  const res = await fetch('http://localhost:5000/api/appointments', { headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
         if (!res.ok) throw new Error('Failed to fetch appointments');
         const data = await res.json();
         if (mounted) setAppointments(data);
@@ -35,7 +36,7 @@ function TBT() {
 
   const handleUpdateDate = async (id, newDate) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/appointments/${id}/update-date`, {
+  const res = await fetch(`${apiBase}/api/appointments/${id}/update-date`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ preference: newDate }),

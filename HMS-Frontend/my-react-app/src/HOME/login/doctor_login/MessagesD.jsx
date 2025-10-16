@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Doc.css'
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function MessagesD(){
   const [msgs, setMsgs] = useState([])
@@ -13,7 +14,7 @@ function MessagesD(){
         if(!stored){ if(mounted) setLoading(false); return }
         const doc = JSON.parse(stored)
         const token = localStorage.getItem('hms_doc_token')
-        const res = await fetch(`http://localhost:5000/api/messages/doctor/${doc.id}`, { headers: { Authorization: token? `Bearer ${token}` : '' } })
+  const res = await fetch(`${apiBase}/api/messages/doctor/${doc.id}`, { headers: { Authorization: token? `Bearer ${token}` : '' } })
         const data = await res.json()
         if(mounted) setMsgs(data)
       }catch(err){ console.error(err) }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function DoctorLogin(){
   const [docId, setDocId] = useState('');
@@ -10,7 +11,7 @@ function DoctorLogin(){
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/doctors/login', {
+  const res = await fetch(`${apiBase}/api/doctors/login`, {
         method: 'POST', headers: { 'Content-Type':'application/json' },
         body: JSON.stringify({ docId, password })
       });

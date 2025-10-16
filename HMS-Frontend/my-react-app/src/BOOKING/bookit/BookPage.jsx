@@ -2,6 +2,8 @@ import React from "react";
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+
 import './Book.css'
 
 
@@ -48,7 +50,7 @@ function BookPage(){
                         const payload = { ...formData, userId };
 
                         // Send formData to backend
-                        const res = await fetch('http://localhost:5000/api/appointments', {
+                        const res = await fetch(`${apiBase}/api/appointments`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload),

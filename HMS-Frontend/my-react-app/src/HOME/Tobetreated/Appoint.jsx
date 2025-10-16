@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './TBT.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function Appoint(){
   const { id } = useParams();
@@ -13,8 +14,8 @@ function Appoint(){
   useEffect(()=>{
     let mounted = true;
     const fetchDocs = async ()=>{
-      try{
-        const res = await fetch('http://localhost:5000/api/doctors');
+  try{
+  const res = await fetch(`${apiBase}/api/doctors`);
         const data = await res.json();
         if(mounted) setDoctors(data);
       }catch(err){ console.error(err); if(mounted) setError('Failed to load doctors') }
@@ -30,7 +31,7 @@ function Appoint(){
       setLoading(true);
       // call assign endpoint
       const token = localStorage.getItem('hms_admin_token');
-      const res = await fetch(`http://localhost:5000/api/appointments/${id}/assign`, {
+  const res = await fetch(`${apiBase}/api/appointments/${id}/assign`, {
         method: 'PATCH', headers: {'Content-Type':'application/json', Authorization: token? `Bearer ${token}` : ''},
         body: JSON.stringify({ doctorId: selected })
       });

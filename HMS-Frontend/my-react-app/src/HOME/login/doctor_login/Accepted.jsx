@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Doc.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function Accepted(){
   const [appts, setAppts] = useState([]);
@@ -13,7 +14,7 @@ function Accepted(){
   if(!stored) return setAppts([]);
   const { id } = JSON.parse(stored);
   const token = localStorage.getItem('hms_doc_token');
-  const res = await fetch(`http://localhost:5000/api/appointments/doctor/${id}/status/accepted`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments/doctor/${id}/status/accepted`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
         const data = await res.json();
         if(mounted) setAppts(data);
       }catch(err){ console.error(err) }
@@ -26,7 +27,7 @@ function Accepted(){
   const treated = async (id)=>{
     try{
   const token = localStorage.getItem('hms_doc_token');
-  const res = await fetch(`http://localhost:5000/api/appointments/${id}/treated`, { method: 'PATCH', headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments/${id}/treated`, { method: 'PATCH', headers: { Authorization: token? `Bearer ${token}` : '' } });
       const data = await res.json();
       if(!res.ok) return alert(data.error || 'Treated failed');
       alert('Marked as treated');

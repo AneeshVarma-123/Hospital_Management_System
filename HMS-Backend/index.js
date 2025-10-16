@@ -6,7 +6,15 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// Allow specifying a single FRONTEND_URL for production CORS restrictions (e.g. https://your-frontend.vercel.app)
+const FRONTEND_URL = process.env.FRONTEND_URL;
+if (FRONTEND_URL) {
+  console.log('CORS restricted to:', FRONTEND_URL);
+  app.use(cors({ origin: FRONTEND_URL }));
+} else {
+  // permissive during development; set FRONTEND_URL in production
+  app.use(cors());
+}
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;

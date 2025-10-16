@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Ad.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function Treated(){
   const [appts, setAppts] = useState([]);
@@ -10,7 +11,7 @@ function Treated(){
     const fetchTreated = async ()=>{
       try{
   const token = localStorage.getItem('hms_admin_token');
-  const res = await fetch('http://localhost:5000/api/appointments/status/treated', { headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments/status/treated`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
   const data = await res.json();
         if(mounted) setAppts(data);
       }catch(err){ console.error(err) }

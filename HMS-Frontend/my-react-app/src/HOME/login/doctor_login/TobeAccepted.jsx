@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Doc.css';
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function TobeAccepted(){
   const [appts, setAppts] = useState([]);
@@ -13,7 +14,7 @@ function TobeAccepted(){
   if(!stored) return setAppts([]);
   const { id } = JSON.parse(stored);
   const token = localStorage.getItem('hms_doc_token');
-  const res = await fetch(`http://localhost:5000/api/appointments/doctor/${id}`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments/doctor/${id}`, { headers: { Authorization: token? `Bearer ${token}` : '' } });
         const data = await res.json();
         if(mounted) setAppts(data);
       }catch(err){ console.error(err) }
@@ -26,7 +27,7 @@ function TobeAccepted(){
   const accept = async (id)=>{
     try{
   const token = localStorage.getItem('hms_doc_token');
-  const res = await fetch(`http://localhost:5000/api/appointments/${id}/accept`, { method: 'PATCH', headers: { Authorization: token? `Bearer ${token}` : '' } });
+  const res = await fetch(`${apiBase}/api/appointments/${id}/accept`, { method: 'PATCH', headers: { Authorization: token? `Bearer ${token}` : '' } });
       const data = await res.json();
       if(!res.ok) return alert(data.error || 'Accept failed');
       alert('Accepted');
@@ -39,7 +40,7 @@ function TobeAccepted(){
     if(reason === null) return; // cancelled
     try{
   const token = localStorage.getItem('hms_doc_token');
-  const res = await fetch(`http://localhost:5000/api/appointments/${id}/reject`, { method: 'PATCH', headers: {'Content-Type':'application/json', Authorization: token? `Bearer ${token}` : ''}, body: JSON.stringify({ reason }) });
+  const res = await fetch(`${apiBase}/api/appointments/${id}/reject`, { method: 'PATCH', headers: {'Content-Type':'application/json', Authorization: token? `Bearer ${token}` : ''}, body: JSON.stringify({ reason }) });
       const data = await res.json();
       if(!res.ok) return alert(data.error || 'Reject failed');
       alert('Rejected');
