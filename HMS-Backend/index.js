@@ -16,6 +16,14 @@ if (FRONTEND_URL) {
   process.exit(1); // Exit if FRONTEND_URL is not set
 }
 
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true, // Allow cookies if needed
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
