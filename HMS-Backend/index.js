@@ -12,15 +12,11 @@ if (FRONTEND_URL) {
   console.log('CORS restricted to:', FRONTEND_URL);
   app.use(cors({ origin: FRONTEND_URL }));
 } else {
-  // permissive during development; set FRONTEND_URL in production
-  app.use(cors({
-  origin: 'https://hmsfrontend-6u5cdf2fq-aneesh-varmas-projects.vercel.app', // Replace with your Vercel URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true // If you need cookies
-}));
+  console.error('FRONTEND_URL is not set. Please configure it in the .env file.');
+  process.exit(1); // Exit if FRONTEND_URL is not set
 }
+
 app.use(express.json());
-app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
